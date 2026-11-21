@@ -122,8 +122,8 @@ class PeerUI {
     }
 
     _name() {
-        // JemaOS : jamais le nom du navigateur ; seulement l appareil/OS
-        // (ex. Android, iOS, macOS, Windows, JemaOS).
+        // Wings8OS : jamais le nom du navigateur ; seulement l appareil/OS
+        // (ex. Android, iOS, macOS, Windows, Wings8OS).
         if (this._peer.name.model) {
             return this._peer.name.os + ' ' + this._peer.name.model;
         }
@@ -509,7 +509,7 @@ class I18n {
                 CHANNEL_STATUS_OPENING: 'Connexion...',
                 CHANNEL_STATUS_OPENED: 'Prêt',
                 CHANNEL_STATUS_CLOSED: 'Fermé',
-                TIP_BROWSER_IN_APP: 'Le navigateur intégré de certaines applications peut bloquer les téléchargements. Il est recommandé d\'utiliser JemaDrop dans le navigateur système.',
+                TIP_BROWSER_IN_APP: 'Le navigateur intégré de certaines applications peut bloquer les téléchargements. Il est recommandé d\'utiliser Wings8Drop dans le navigateur système.',
                 TIP_AUTO_UPDATE: 'Une mise à jour est disponible et sera appliquée au prochain lancement.',
                 TIP_CONNECTION_PENDING: 'Connexion en cours... Si cela prend plus de temps que d\'habitude, vérifiez votre connexion réseau et fermez tout proxy, tunnel ou VPN.',
             },
@@ -520,7 +520,7 @@ class I18n {
                 CHANNEL_STATUS_OPENING: 'Connecting...',
                 CHANNEL_STATUS_OPENED: 'Ready',
                 CHANNEL_STATUS_CLOSED: 'Closed',
-                TIP_BROWSER_IN_APP: 'The built-in browser of some apps may block files to download. It recommends you use JemaDrop in the system browser.',
+                TIP_BROWSER_IN_APP: 'The built-in browser of some apps may block files to download. It recommends you use Wings8Drop in the system browser.',
                 TIP_AUTO_UPDATE: 'Update is available and it will be applied after the next launch.',
                 TIP_CONNECTION_PENDING: 'Connecting... If this takes longer than usual, please check your network connection and shutdown all proxy, network tunnel or VPN processes.',
             },
@@ -542,7 +542,7 @@ class I18n {
             }
         };
 
-        const saved = localStorage.getItem('jemadrop-theme');
+        const saved = localStorage.getItem('wings8drop-theme');
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const isDark = saved ? saved === 'dark' : prefersDark;
         applyTheme(isDark);
@@ -550,7 +550,7 @@ class I18n {
         themeBtn.addEventListener('click', () => {
             const next = !document.body.classList.contains('dark');
             applyTheme(next);
-            localStorage.setItem('jemadrop-theme', next ? 'dark' : 'light');
+            localStorage.setItem('wings8drop-theme', next ? 'dark' : 'light');
         });
     }
 
@@ -580,12 +580,12 @@ class QrCode {
         const container = document.getElementById('qr-container');
         const qrCodeImg = document.createElement('span');
         qrCodeImg.id = 'qrcode-img';
-        qrCodeImg.innerHTML = '<img src="images/drop.jemaos.com.png" alt="QR code drop.jemaos.com">';
+        qrCodeImg.innerHTML = '<img src="images/drop.wings8.org.png" alt="QR code drop.wings8.org">';
         container.appendChild(qrCodeImg);
     }
 }
 
-class JemaDrop {
+class Wings8Drop {
     constructor() {
         const server = new ServerConnection();
         const peers = new PeersManager(server);
@@ -612,7 +612,7 @@ class JemaDrop {
     }
 }
 
-const jemadrop = new JemaDrop();
+const wings8drop = new Wings8Drop();
 
 document.copy = text => {
     // A <span> contains the text to copy

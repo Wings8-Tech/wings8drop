@@ -590,7 +590,7 @@ RTCPeer.config = {
         },
         {
             urls: 'turn:62.210.39.166:3478',
-            username: 'jemauser',
+            username: 'wings8user',
             credential: 'tAnYj7uASjutRyNpSl//R/6PZ6Doqh+PDrldDsYPNPA='
         }
     ],

@@ -1,7 +1,7 @@
 {
-    "name": "JemaDrop",
-    "short_name": "JemaDrop",
-    "description": "Transférez des fichiers entre vos appareils JemaOS",
+    "name": "Wings8Drop",
+    "short_name": "Wings8Drop",
+    "description": "Transférez des fichiers entre vos appareils Wings8OS",
     "icons": [{
         "src": "images/icon-default.png",
         "sizes": "192x192",

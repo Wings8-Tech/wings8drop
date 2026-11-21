@@ -1,10 +1,10 @@
 <div align="center">
 
-<h1>JemaDrop</h1>
+<h1>Wings8Drop</h1>
 
 ### Instant, peer-to-peer file sharing on your local network — no cloud, no upload
 
-[![Made by Jema Technology](https://img.shields.io/badge/Made%20by-Jema%20Technology-8286ef)](https://www.jematechnology.fr)
+[![Made by Wings8 Technology](https://img.shields.io/badge/Made%20by-Wings8%20Technology-8286ef)](https://www.wings8.org)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 [![WebRTC](https://img.shields.io/badge/WebRTC-P2P-333333?logo=webrtc&logoColor=white)](https://webrtc.org)
 [![WebSockets](https://img.shields.io/badge/WebSockets-signaling-010101?logo=socketdotio&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
@@ -21,7 +21,7 @@
 
 </div>
 
-![JemaDrop — send files](screenshots/main.png)
+![Wings8Drop — send files](screenshots/main.png)
 
 ---
 
@@ -29,14 +29,14 @@
 
 - 📱 **Same-network transfer** — peers on the same public IP form a room
 - 🔐 **Direct P2P** — files travel only between devices (WebRTC); the server is used for signaling only
-- 🧭 **QR code** — scan to open JemaDrop on another device instantly
+- 🧭 **QR code** — scan to open Wings8Drop on another device instantly
 - 🖱️ **Drag & drop** — no size limits imposed by an upload server
 - 🌗 **Light / dark** theme
 - 🌍 **Multi-language** UI
 - 📶 **Installable PWA**
 - 🧱 **Self-hostable** with Docker
 
-> JemaDrop is a fork of [Snapdrop](https://github.com/RobinLinus/snapdrop), adapted for JemaOS.
+> Wings8Drop is a fork of [Snapdrop](https://github.com/RobinLinus/snapdrop), adapted for Wings8OS.
 
 ---
 
@@ -44,13 +44,13 @@
 
 | Light | Dark |
 | :---: | :---: |
-| <img src="screenshots/main.png" alt="JemaDrop — light" /> | <img src="screenshots/main-dark.png" alt="JemaDrop — dark" /> |
+| <img src="screenshots/main.png" alt="Wings8Drop — light" /> | <img src="screenshots/main-dark.png" alt="Wings8Drop — dark" /> |
 
 ### 📱 Mobile
 
 | Dark | Light |
 | :---: | :---: |
-| <img src="screenshots/mobile-dark.png" alt="JemaDrop — mobile, dark" width="300" /> | <img src="screenshots/mobile-light.png" alt="JemaDrop — mobile, light" width="300" /> |
+| <img src="screenshots/mobile-dark.png" alt="Wings8Drop — mobile, dark" width="300" /> | <img src="screenshots/mobile-light.png" alt="Wings8Drop — mobile, light" width="300" /> |
 
 ---
 
@@ -59,8 +59,8 @@
 ### Docker (recommended)
 
 ```bash
-git clone https://github.com/JemaOS/jemadrop.git
-cd jemadrop
+git clone https://github.com/Wings8-Tech/wings8drop.git
+cd wings8drop
 docker-compose up
 # open http://localhost:6080
 ```
@@ -115,5 +115,5 @@ git push origin feat/my-feature
 Released under the **GNU GPL-3.0** — see [LICENSE](LICENSE).
 
 <div align="center">
-Made with ❤️ by <a href="https://www.jematechnology.fr">Jema Technology</a>
+Made with ❤️ by <a href="https://www.wings8.org">Wings8 Technology</a>
 </div>

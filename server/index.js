@@ -1,6 +1,6 @@
 const parser = require('ua-parser-js');
 
-class JemaDropServer {
+class Wings8DropServer {
     constructor(port) {
         const WebSocket = require('ws');
         this._wss = new WebSocket.Server({ port: port });
@@ -10,7 +10,7 @@ class JemaDropServer {
 
         this._rooms = {};
 
-        console.log('JemaDrop node server is running on port', port);
+        console.log('Wings8Drop node server is running on port', port);
     }
 
     _onConnection(peer) {
@@ -210,9 +210,9 @@ class Peer {
             type: ua.device.type,
         };
 
-        // JemaOS
+        // Wings8OS
         if (this.name.os.includes('Chromium')) {
-            this.name.os = 'JemaOS';
+            this.name.os = 'Wings8OS';
         }
         console.log(this.name);
     }
@@ -252,4 +252,4 @@ class Peer {
     };
 }
 
-const server = new JemaDropServer(process.env.PORT || 6000);
+const server = new Wings8DropServer(process.env.PORT || 6000);

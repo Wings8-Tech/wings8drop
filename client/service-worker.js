@@ -1,11 +1,11 @@
-const CACHE_NAME = 'JemaDrop-v1.2.5';
+const CACHE_NAME = 'Wings8Drop-v1.2.5';
 const urlsToCache = [
     '/',
     '/styles.css',
     '/scripts/network.js',
     '/scripts/ui.js',
     '/sounds/drop.mp3',
-    '/images/drop.jemaos.com.png',
+    '/images/drop.wings8.org.png',
     '/images/favicon.png',
 ];
 

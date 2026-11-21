@@ -1,7 +1,7 @@
 version: "3"
 services:
   node:
-    container_name: "jemadrop-node"
+    container_name: "wings8drop-node"
     image: "node:lts-alpine"
     logging:
       options:
@@ -14,7 +14,7 @@ services:
     command: ash -c "npm i && node index.js"
     restart: always
   nginx:
-    container_name: "jemadrop-nginx"
+    container_name: "wings8drop-nginx"
     image: "nginx:alpine"
     volumes:
       - ./client:/usr/share/nginx/html

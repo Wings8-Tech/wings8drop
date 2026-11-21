@@ -3,7 +3,7 @@
 WORKING_DIR="$(cd "$(dirname "$0")"; pwd -P)"
 DOCKER_COMPOSE_BIN=$(which docker-compose)
 DOCKER_COMPOSE_FILE="$WORKING_DIR/docker-compose.yml"
-SERVICE_NAME="jemadrop"
+SERVICE_NAME="wings8drop"
 
 usage() {
     echo "Usage: $(basename -- "$0") start|stop|restart|status|debug|rebuild|down [stag]"
