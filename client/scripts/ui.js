@@ -433,7 +433,7 @@ class WebShareTargetUI {
 
 class I18n {
     constructor() {
-        this.currentLanguage = navigator.language.startsWith('en') ? 'en' : 'fr';
+        this.currentLanguage = localStorage.getItem('wings8drop_lang') === 'fr' ? 'fr' : 'en';
         this.languages = ['fr', 'en'];
         this._cacheTranslations();
         this.translate(this.currentLanguage);
