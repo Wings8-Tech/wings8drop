@@ -406,6 +406,7 @@ class PeersManager {
         this._server = serverConnection;
         Events.on('signal', e => this._onMessage(e.detail));
         Events.on('peers', e => this._onPeers(e.detail));
+        Events.on('peer-joined', e => this._onPeerJoined(e.detail));
         Events.on('files-selected', e => this._onFilesSelected(e.detail));
         Events.on('send-text', e => this._onSendText(e.detail));
         Events.on('peer-left', e => this._onPeerLeft(e.detail));
@@ -416,6 +417,19 @@ class PeersManager {
             this.peers[message.sender] = new RTCPeer(this._server);
         }
         this.peers[message.sender].onServerMessage(message);
+    }
+
+    _onPeerJoined(peer) {
+        if (!peer || !peer.id) return;
+        if (this.peers[peer.id]) {
+            this.peers[peer.id].refresh();
+            return;
+        }
+        // The peer that just arrived is the caller and will send the offer:
+        // create a passive peer that waits for it.
+        this.peers[peer.id] = window.isRtcSupported && peer.rtcSupported
+            ? new RTCPeer(this._server)
+            : new WSPeer(this._server, peer.id);
     }
 
     _onPeers(peers) {
@@ -457,8 +471,13 @@ class PeersManager {
     _onPeerLeft(peerId) {
         const peer = this.peers[peerId];
         delete this.peers[peerId];
-        if (!peer || !peer._peer) return;
-        peer._peer.close();
+        if (!peer) return;
+        try {
+            if (peer._channel) peer._channel.close();
+            if (peer._conn) peer._conn.close();
+        } catch {
+            /* already closed */
+        }
     }
 
     _reload() {

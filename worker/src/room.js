@@ -32,8 +32,8 @@ export class Room {
     const peer = { id: peerId, name, socket: server };
     const others = [];
     for (const [id, other] of this.peers) {
-      others.push({ id, name: other.name });
-      send(other.socket, { type: 'peer-joined', peer: { id, name } });
+      others.push(describe(id, other));
+      send(other.socket, { type: 'peer-joined', peer: describe(peerId, peer) });
     }
     this.peers.set(peerId, peer);
 
@@ -82,6 +82,10 @@ function send(socket, message) {
   try {
     socket.send(JSON.stringify(message));
   } catch {}
+}
+
+function describe(id, peer) {
+  return { id, name: peer.name, rtcSupported: true };
 }
 
 function peerName(userAgent) {
