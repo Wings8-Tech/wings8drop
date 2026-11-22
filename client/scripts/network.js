@@ -60,10 +60,13 @@ class ServerConnection {
         const serverHost = window.WINGS8_DROP_SERVER || location.host;
         const protocol = location.protocol.startsWith('https') ? 'wss' : 'ws';
         const webrtc = window.isRtcSupported ? '/webrtc' : '/fallback';
-        let peerId = localStorage.getItem('wings8drop_peer');
+        // Per-tab identity so two tabs in one browser stay distinct peers.
+        let peerId = sessionStorage.getItem('wings8drop_peer');
         if (!peerId) {
-            peerId = crypto.randomUUID();
-            localStorage.setItem('wings8drop_peer', peerId);
+            peerId =
+                (crypto.randomUUID && crypto.randomUUID()) ||
+                'p' + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+            sessionStorage.setItem('wings8drop_peer', peerId);
         }
         const url = protocol + '://' + serverHost + '/server' + webrtc + '?peer=' + encodeURIComponent(peerId);
         return url;
