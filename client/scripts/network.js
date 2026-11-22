@@ -590,14 +590,21 @@ FileChunker.MAX_BUFFERED = 4 * 1024 * 1024;
 FileChunker.LOW_WATERMARK = 512 * 1024;
 
 RTCPeer.config = {
-    'iceServers': [
-        {
-            urls: 'stun:stun.l.google.com:19302',
-        },
-        {
-            urls: 'turn:62.210.39.166:3478',
-            username: 'wings8user',
-            credential: 'tAnYj7uASjutRyNpSl//R/6PZ6Doqh+PDrldDsYPNPA='
-        }
-    ],
+    iceServers: [
+        { urls: 'stun:stun.cloudflare.com:3478' }
+    ]
 };
+
+// Fetch short-lived Cloudflare TURN credentials from the Wings8 API.
+(async () => {
+    try {
+        const response = await fetch('https://connect-api.wings8tech.com/v1/turn-credentials', { cache: 'no-store' });
+        if (!response.ok) return;
+        const payload = await response.json();
+        if (Array.isArray(payload.iceServers) && payload.iceServers.length > 0) {
+            RTCPeer.config = { iceServers: payload.iceServers };
+        }
+    } catch {
+        // Direct/STUN-only fallback remains available.
+    }
+})();
