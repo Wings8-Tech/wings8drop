@@ -580,7 +580,7 @@ class QrCode {
         const container = document.getElementById('qr-container');
         const qrCodeImg = document.createElement('span');
         qrCodeImg.id = 'qrcode-img';
-        qrCodeImg.innerHTML = '<img src="images/drop.wings8.org.png" alt="QR code drop.wings8.org">';
+        qrCodeImg.innerHTML = '<img src="images/drop.wings8.org.png?v=wings8" alt="QR code drop.wings8.org">';
         container.appendChild(qrCodeImg);
     }
 }
