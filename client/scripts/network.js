@@ -56,10 +56,16 @@ class ServerConnection {
     }
 
     _endpoint() {
-        // hack to detect if deployment or development environment
+        // The static UI and the signaling service can live on different hosts.
+        const serverHost = window.WINGS8_DROP_SERVER || location.host;
         const protocol = location.protocol.startsWith('https') ? 'wss' : 'ws';
         const webrtc = window.isRtcSupported ? '/webrtc' : '/fallback';
-        const url = protocol + '://' + location.host + '/server' + webrtc;
+        let peerId = localStorage.getItem('wings8drop_peer');
+        if (!peerId) {
+            peerId = crypto.randomUUID();
+            localStorage.setItem('wings8drop_peer', peerId);
+        }
+        const url = protocol + '://' + serverHost + '/server' + webrtc + '?peer=' + encodeURIComponent(peerId);
         return url;
     }
 
