@@ -10,8 +10,12 @@ export class Room {
     }
 
     const url = new URL(request.url);
-    const peerId = url.searchParams.get('peer') || crypto.randomUUID();
+    const peerId = request.headers.get('x-wings8-peer') || url.searchParams.get('peer') || crypto.randomUUID();
     const name = peerName(request.headers.get('user-agent') || '');
+
+    for (const [id, other] of [...this.peers]) {
+      if (other.socket.readyState !== 1) this.peers.delete(id);
+    }
 
     const pair = new WebSocketPair();
     const [client, server] = Object.values(pair);

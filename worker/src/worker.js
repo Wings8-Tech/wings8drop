@@ -23,11 +23,11 @@ export default {
 
       const id = env.ROOMS.idFromName(roomName);
       const stub = env.ROOMS.get(id);
-      const target = new URL(request.url);
-      target.searchParams.set('peer', peerId);
-      target.pathname = '/room';
+      const headers = new Headers(request.headers);
+      headers.set('x-wings8-peer', peerId);
+      const forwarded = new Request(request, { headers });
 
-      const response = await stub.fetch(new Request(target.toString(), request));
+      const response = await stub.fetch(forwarded);
       if (setCookie && response.status === 101) {
         const headers = new Headers(response.headers);
         headers.append('Set-Cookie', `peerid=${encodeURIComponent(peerId)}; Path=/; SameSite=Lax; Secure; Max-Age=31536000`);
