@@ -16,7 +16,7 @@
   ],
   "start_url": "/",
   "display": "minimal-ui",
-  "theme_color": "#0A1F4A",
+  "theme_color": "#0B1F4B",
   "background_color": "#FFFFFF",
   "share_target": {
     "action": "/?share_target",
