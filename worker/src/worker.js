@@ -15,10 +15,12 @@ export default {
         .map((byte) => byte.toString(16).padStart(2, '0'))
         .join('');
 
+      const requested = url.searchParams.get('peer') || '';
       const cookie = request.headers.get('cookie') || '';
       const match = cookie.match(/(?:^|;\s*)peerid=([^;]+)/);
-      let peerId = match ? decodeURIComponent(match[1]) : '';
-      const setCookie = !peerId;
+      const valid = (value) => /^[A-Za-z0-9-]{8,64}$/.test(value);
+      let peerId = valid(requested) ? requested : match ? decodeURIComponent(match[1]) : '';
+      const setCookie = !match;
       if (!peerId) peerId = crypto.randomUUID();
 
       const id = env.ROOMS.idFromName(roomName);
